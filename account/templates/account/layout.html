@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <title>Account</title>
+</head>
+<body>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+
+    <p class="m-3">SyncRead</p>
+    <div class="row" id='menu'>
+        <div class="col-2">
+            <nav class="nav flex-column">
+                <a class="nav-link active " aria-current="page" href="{% url 'books' %}">Books</a>
+                <a class="nav-link" href="{% url 'add' %}">Add book</a>
+                <a class="nav-link disabled" href="#">Favorites</a>
+              </nav>
+        </div>
+        <div class="col">
+            {% block content %}
+            {% endblock %}
+        </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'account/layout.html' %}
+
+{% block content %}
+<div class="container"> 
+    <form action="{% url 'add' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="file" name="files" multiple>
+        </div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+    </form>
+       
+</div>
+{% endblock %}
