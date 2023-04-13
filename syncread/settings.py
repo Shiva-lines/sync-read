@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'reader'
+    'reader',
     'auth_app',
     'account',
     'django.contrib.admin',

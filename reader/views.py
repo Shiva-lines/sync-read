@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def reader_app(request):
+    return render(request, 'reader/reader.html')
