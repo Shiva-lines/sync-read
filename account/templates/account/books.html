@@ -2,12 +2,16 @@
 
 {% block content %}
 <div class="container">
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Ruslan i Ludmila</h5>
-          <p class="card-text">Alexander Pushkin</p>
-          <a href="#" class="btn btn-primary">Read</a>
+  {% if books %}
+      {% for book in books %} 
+        <div class="card mb-2">
+            <div class="card-body">
+              <h5 class="card-title">{{ book.title }}</h5>
+              <p class="card-text">{{ book.authors }}</p>
+              <a href="#" class="btn btn-primary">Read</a>
+            </div>
         </div>
-    </div>
+      {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

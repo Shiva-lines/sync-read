@@ -10,7 +10,20 @@
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
 
-    <p class="m-3">SyncRead</p>
+    <div class="row m-3">
+        <div class="col">
+            Hello, {{ username }}
+        </div>
+        <div class="col text-center">
+            <strong>
+                SyncRead
+            </strong>
+        </div>
+        <div class="col text-end">
+            <a href="{% url 'log_out' %}" class="btn btn-light btn-sm">Logout</a>
+        </div>
+    </div>
+
     <div class="row" id='menu'>
         <div class="col-2">
             <nav class="nav flex-column">
