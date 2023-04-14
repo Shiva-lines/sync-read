@@ -4,6 +4,21 @@ import os
 from syncread import settings
 from ebooklib import epub
 from .models import Book
+from syncread.settings import MEDIA_ROOT
+
+def remove(request):
+    if request.method == 'POST':
+        book_pk = request.POST.get('book_pk')
+        book = Book.objects.get(pk=book_pk)
+        file_path = os.path.join(MEDIA_ROOT, book.path)
+        if os.path.isfile(file_path):  # проверяем, является ли указанный путь файлом
+            book.delete()
+            os.remove(file_path)  # удаляем файл
+        else:
+            print("Error: {} is not a file".format(file_path))
+    return redirect('books')
+
+
 
 
 def books(request):
@@ -68,5 +83,5 @@ class Add(View):
                 
             return redirect('books')
         else:
-            return render(request, 'account/add.html')
+            return render(request, 'account/add.html', {'username': request.user.username})
 

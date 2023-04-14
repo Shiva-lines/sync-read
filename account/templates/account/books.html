@@ -1,17 +1,37 @@
 {% extends 'account/layout.html' %}
 
 {% block content %}
-<div class="container">
-  {% if books %}
-      {% for book in books %} 
-        <div class="card mb-2">
-            <div class="card-body">
-              <h5 class="card-title">{{ book.title }}</h5>
-              <p class="card-text">{{ book.authors }}</p>
-              <a href="#" class="btn btn-primary">Read</a>
+<div class="row">
+  <div class="col-10">
+    <div class="container">
+      {% if books %}
+          {% for book in books %} 
+            <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text">{{ book.authors }}</p>
+                  <div class="d-flex justify-content-between">
+                    <form method="post" action="{% url 'reader' %}">
+                      {% csrf_token %}
+                      <input type="hidden" name="book_pk" value="{{ book.pk }}">
+                      <input type="submit" class="btn btn-primary" value="Read">
+                    </form>
+                    <form method="post" action="{% url 'remove' %}">
+                      {% csrf_token %}
+                      <input type="hidden" name="book_pk" value="{{ book.pk }}">
+                      <input type="submit" class="btn btn-outline-danger" value="Remove">
+                    </form>
+                  </div>
+                </div>
             </div>
-        </div>
-      {% endfor %}
-    {% endif %}
+          {% endfor %}
+        {% else%}
+            <div class="text-secondary">
+              Nothing here...
+            </div>
+        {% endif %}
+    </div>
+  </div>
+  <div class="col"></div>
 </div>
 {% endblock %}

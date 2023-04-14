@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
-from .forms import LoginForm
+from .forms import LoginForm, SingupFrom
 
 # Create your views here.
 
@@ -23,3 +23,7 @@ def log_in(request):
 def log_out(request):
     logout(request)
     return redirect('log_in')
+
+def sing_up(request):
+    form = SingupFrom
+    return render(request, 'auth_app/singup.html', {'form': form})
