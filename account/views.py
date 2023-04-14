@@ -83,5 +83,6 @@ class Add(View):
                 
             return redirect('books')
         else:
-            return render(request, 'account/add.html', {'username': request.user.username})
+            username = request.user.username
+            return render(request, 'account/add.html', {'username': username})
 
